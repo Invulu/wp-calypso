@@ -2,7 +2,7 @@
  * External dependencies
  */
 import React from 'react';
-import assign from 'lodash/assign';
+import { assign, omit } from 'lodash';
 import classNames from 'classnames';
 
 /**
@@ -33,7 +33,6 @@ export default React.createClass( {
 
 	render() {
 		const { site, redirect, linkDisplay } = this.props;
-		const buttonElement = linkDisplay ? 'button' : Button;
 
 		const buttonClasses = classNames( {
 			button: true,
@@ -41,7 +40,8 @@ export default React.createClass( {
 			'is-link': linkDisplay
 		} );
 
-		const buttonProps = assign( {}, this.props, {
+		const omitProps = [ 'site', 'redirect', 'isMock', 'linkDisplay' ];
+		const buttonProps = assign( {}, ...omit( this.props, omitProps ), {
 			id: `disconnect-jetpack-${ site.ID }`,
 			className: buttonClasses,
 			compact: true,
@@ -58,7 +58,6 @@ export default React.createClass( {
 		} );
 
 		let { text } = this.props;
-		let buttonChildren;
 
 		if ( ! text ) {
 			text = this.translate( 'Disconnect', {
@@ -66,13 +65,13 @@ export default React.createClass( {
 			} );
 		}
 
-		buttonChildren = (
+		const buttonChildren = (
 			<div>
 				{ text }
 				<DisconnectJetpackDialog site={ site } ref="dialog" redirect={ redirect } />
 			</div>
 		);
 
-		return React.createElement( buttonElement, buttonProps, buttonChildren );
+		return React.createElement( Button, buttonProps, buttonChildren );
 	}
 } );
