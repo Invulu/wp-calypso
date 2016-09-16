@@ -1,8 +1,11 @@
 // Primary Accent (Blues)
+$red-givingpress:        #D1284A;
+$purple-givingpress:     #3E3A47;
 $blue-wordpress:         #0087be;
 $blue-light:             #78dcfa;
 $blue-medium:            #00aadc;
 $blue-dark:              #005082;
+
 
 // Grays
 $gray:                   #87a6bc;
@@ -40,7 +43,7 @@ $transparent:            rgba(255,255,255,0);
 $border-ultra-light-gray: #e8f0f5;
 
 // Layout
-$masterbar-color:          $blue-wordpress;
+$masterbar-color:          $red-givingpress;
 $sidebar-bg-color:         lighten( $gray, 30% );
 $sidebar-text-color:       $gray-dark;
 $sidebar-selected-color:   $gray;
